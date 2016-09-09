@@ -1,0 +1,84 @@
+object frm2016Assignement8: Tfrm2016Assignement8
+  Left = 319
+  Height = 359
+  Top = 147
+  Width = 515
+  Caption = 'frm2016Assignement8'
+  ClientHeight = 359
+  ClientWidth = 515
+  Font.Color = clBlack
+  LCLVersion = '1.6.0.4'
+  object Image1: TImage
+    Left = 16
+    Height = 106
+    Top = 8
+    Width = 178
+  end
+  object lblHeader: TLabel
+    Left = 208
+    Height = 32
+    Top = 8
+    Width = 290
+    Caption = 'THE OLYMPIC GAMES'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblJogging: TLabel
+    Left = 208
+    Height = 15
+    Top = 59
+    Width = 90
+    Caption = 'Hours of jogging'
+    ParentColor = False
+  end
+  object lblRowing: TLabel
+    Left = 208
+    Height = 15
+    Top = 99
+    Width = 86
+    Caption = 'Hours of rowing'
+    ParentColor = False
+  end
+  object SpinEdit1: TSpinEdit
+    Left = 360
+    Height = 23
+    Top = 51
+    Width = 138
+    TabOrder = 0
+  end
+  object SpinEdit2: TSpinEdit
+    Left = 360
+    Height = 23
+    Top = 91
+    Width = 138
+    TabOrder = 1
+  end
+  object grpLossResult: TGroupBox
+    Left = 17
+    Height = 78
+    Top = 138
+    Width = 481
+    Caption = 'Loss Result:'
+    ClientHeight = 58
+    ClientWidth = 477
+    Font.Color = clBlack
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 2
+    object lblResult: TLabel
+      Left = 8
+      Height = 15
+      Top = 16
+      Width = 45
+      Caption = 'lblResult'
+      ParentColor = False
+    end
+  end
+end
