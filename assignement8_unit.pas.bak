@@ -6,20 +6,29 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Spin;
+  StdCtrls, Spin, Buttons, ComCtrls;
 
 type
 
   { Tfrm2016Assignement8 }
 
   Tfrm2016Assignement8 = class(TForm)
+    btnReset: TBitBtn;
+    btnCalc: TButton;
+    btnNotes: TButton;
     grpLossResult: TGroupBox;
     Image1: TImage;
+    lblResult: TLabel;
     lblHeader: TLabel;
     lblJogging: TLabel;
     lblRowing: TLabel;
-    SpinEdit1: TSpinEdit;
-    SpinEdit2: TSpinEdit;
+    memNotesToMyself: TMemo;
+    sedJog: TSpinEdit;
+    sedRow: TSpinEdit;
+    procedure btnCalcClick(Sender: TObject);
+    procedure btnNotesClick(Sender: TObject);
+    procedure btnResetClick(Sender: TObject);
+    procedure AddNotes;
   private
     { private declarations }
   public
@@ -32,6 +41,71 @@ var
 implementation
 
 {$R *.lfm}
+
+{ Tfrm2016Assignement8 }
+
+procedure Tfrm2016Assignement8.btnNotesClick(Sender: TObject);
+begin
+     //Call the AddNotes procedure.
+     AddNotes;
+end;
+
+//AddNotes procedure declared as child of form to be able to access form elements.
+procedure Tfrm2016Assignement8.AddNotes;
+//Holds the value from the input box.
+var value : String;
+begin
+   //Prompt the user for input.
+   value := InputBox('Note to Me', 'Please enter the note','');
+
+   //Check that the input is not empty before appending it to the memo.
+   if value <> '' then
+      //Append the captured input, the date and an empty line.
+      begin
+           memNotesToMyself.Append(value);
+           memNotesToMyself.Append(formatdatetime('yyyy/mm/dd', date));
+           memNotesToMyself.Append('');
+      end;
+end;
+
+{
+ Calculates the gramms lost from the specified hours of jogging and rowing.
+ hoursJogging - The number of hours spent jogging.
+ hoursRowing - The number of hours spent rowing.
+}
+function GrammsOff(hoursJogging, hoursRowing: Integer): Integer;
+  var calories : Integer;
+begin
+     //Calculte the total amount of calories burned by jogging and rowing.
+     calories := (hoursJogging * 200) + (hoursRowing * 475);
+
+     //The passed into the Result variable is automatically returned.
+     Result := calories * 10 DIV 77;
+end;
+
+procedure Tfrm2016Assignement8.btnCalcClick(Sender: TObject);
+begin
+     {
+       Call the GrammsOff function, convert it to a string and update the
+       result label.
+     }
+     lblResult.Caption := IntToStr(GrammsOff(sedJog.Value, sedRow.Value));
+end;
+
+
+{
+ Resets the Notes memo component, by clearing it and writing the String
+ 'Notes to self:'.
+ Resets the two sping edits to 0.
+}
+procedure Tfrm2016Assignement8.btnResetClick(Sender: TObject);
+begin
+      memNotesToMyself.Clear;
+      memNotesToMyself.Append('Notes to self:');
+      sedJog.Value := 0;
+      sedRow.Value := 0;
+      lblResult.Caption := '0';
+end;
 
 end.
 
