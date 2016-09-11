@@ -604,8 +604,8 @@ object frm2016Assignement8: Tfrm2016Assignement8
       Left = 8
       Height = 15
       Top = 8
-      Width = 6
-      Caption = '0'
+      Width = 42
+      Caption = '0 grams'
       ParentColor = False
     end
   end

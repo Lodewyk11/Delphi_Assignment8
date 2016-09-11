@@ -89,7 +89,7 @@ begin
        Call the GrammsOff function, convert it to a string and update the
        result label.
      }
-     lblResult.Caption := IntToStr(GrammsOff(sedJog.Value, sedRow.Value));
+     lblResult.Caption := IntToStr(GrammsOff(sedJog.Value, sedRow.Value)) + ' grams';
 end;
 
 
@@ -105,7 +105,7 @@ begin
       memNotesToMyself.Append('Notes to self:');
       sedJog.Value := 0;
       sedRow.Value := 0;
-      lblResult.Caption := '0';
+      lblResult.Caption := '0 grams';
 end;
 
 end.
